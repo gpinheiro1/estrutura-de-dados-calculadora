@@ -18,5 +18,12 @@ public class Main {
         } catch (Exception e){
             e.getMessage();
         }
+
+        Pilha teste = new Pilha();
+        teste.empilhar(5);
+        System.out.println(teste);
+        teste.desempilhar();
+        System.out.println(teste);
+
     }
 }

@@ -6,6 +6,8 @@ import java.util.StringTokenizer;
 
 public class Expressao {
     private String expressao;
+    private char operador;
+    
 
     //criar uma pilha (colocação dos operadores)
     //criar uma fila (colocação dos números)
@@ -30,4 +32,6 @@ public class Expressao {
         }
         return 0;
     }
+
+
 }
