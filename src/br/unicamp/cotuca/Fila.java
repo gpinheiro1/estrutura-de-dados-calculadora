@@ -1,5 +1,7 @@
 package br.unicamp.cotuca;
 
+import java.util.Arrays;
+
 public class Fila<T> {
     private int inicio;
     private int fim;
@@ -44,6 +46,16 @@ public class Fila<T> {
         inicio++;
         qtdElementos--;
         return elemento;
+    }
+
+    @Override
+    public String toString() {
+        return "Fila{" +
+            "inicio=" + inicio +
+            ", fim=" + fim +
+            ", qtdElementos=" + qtdElementos +
+            ", fila=" + Arrays.toString(fila) +
+            '}';
     }
 
 }

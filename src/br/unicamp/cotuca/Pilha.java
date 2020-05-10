@@ -25,9 +25,8 @@ public class Pilha<T> {
     public void empilhar(T elemento) throws Exception {
         if (elemento == null)
             throw new Exception("Elemento inválido");
-        for(int i = topo; i <= tamanho(); i++){
-            this.pilha[++i] = elemento;
-        }
+        topo++;
+        this.pilha[topo] = elemento;
     }
 
     public T desempilharEretornar() throws Exception {
@@ -41,9 +40,9 @@ public class Pilha<T> {
 
     @Override
     public String toString() {
-        return "Pilha{" +
+        return "Pilha {" +
             "pilha=" + Arrays.toString(pilha) +
-            ", posicao=" + topo +
+            ", última posicao preenchida: " + topo +
             '}';
     }
 }

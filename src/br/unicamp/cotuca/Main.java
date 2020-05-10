@@ -16,13 +16,25 @@ public class Main {
             System.out.println(resultado);
 
 
-            Pilha teste = new Pilha();
-            teste.empilhar(5);
-            System.out.println(teste);
+            //teste métodos pilha
+            Pilha teste = new Pilha(3);
+            teste.empilhar(10);
+            teste.empilhar(25);
+            teste.empilhar(7);
             teste.desempilharEretornar();
             System.out.println(teste);
 
-        } catch (Exception e){
+            //teste métodos fila
+            Fila fila = new Fila(4);
+            fila.adicionar(5);
+            fila.adicionar(5);
+            fila.adicionar(19);
+            fila.adicionar(25);
+            fila.adicionar(4);
+            fila.removerEretornar();
+            fila.removerEretornar();
+
+        } catch (Exception e) {
             e.getMessage();
         }
 
