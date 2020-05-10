@@ -1,7 +1,6 @@
 package br.unicamp.cotuca;
 
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class Main {
 
@@ -15,15 +14,18 @@ public class Main {
 
             double resultado = Expressao.resolva(exp);
             System.out.println(resultado);
+
+
+            Pilha teste = new Pilha();
+            teste.empilhar(5);
+            System.out.println(teste);
+            teste.desempilharEretornar();
+            System.out.println(teste);
+
         } catch (Exception e){
             e.getMessage();
         }
 
-        Pilha teste = new Pilha();
-        teste.empilhar(5);
-        System.out.println(teste);
-        teste.desempilhar();
-        System.out.println(teste);
 
     }
 }
