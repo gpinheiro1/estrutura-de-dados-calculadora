@@ -1,43 +1,43 @@
 package br.unicamp.cotuca;
 
 import validations.ValidationUtils;
-
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Expressao {
-    private String expressao;
-    private char operador;
+    
+    Fila filaDeSaida;
+    Pilha pilhaDeOperadores;
+    
+    private Expressao() {
+        filaDeSaida = new Fila(20);
+        pilhaDeOperadores = new Pilha(20);
+    }
+    
+    double resolver(String strExp) throws Exception {
 
+        String expressao = eliminaEspacosEmBranco(strExp);
+        ValidationUtils.validaExpressao(expressao);
+        StringTokenizer separador = new StringTokenizer(expressao, "()^/*-+", true);
+        while(separador.hasMoreTokens()) {
+            String pedaço = separador.nextToken();
+            if (pedaço.matches("[0-9]+"))
+                filaDeSaida.adicionar(pedaço);
+             else if (pedaço.matches("[(]+"))
+                pilhaDeOperadores.empilhar(pedaço);
 
-    public String toString() {
-        String ret = "";
-
-        ret += "Expressão aritmética: " + this.expressao + "\n";
-
-        return ret;
+             //falta verificar os operadores -->  ^/*+-
+        }
+        return 0;
     }
 
-    public static String eliminaEspacosEmBranco(String expressao) {
+    private String eliminaEspacosEmBranco(String expressao) {
         expressao = expressao.replaceAll("\\s+", "");
         System.out.println(expressao);
         return expressao;
     }
 
-    public static double resolva(String strExp) throws Exception{
-
-        String expressao = eliminaEspacosEmBranco(strExp);
-        ValidationUtils.validaExpressao(expressao);
-        StringTokenizer separador = new StringTokenizer(expressao, "()^/*-+", true);
-
-        while(separador.hasMoreTokens()) {
-            String pedaço = separador.nextToken();
-            //é exatamente aqui onde cada pedacinho é direcionado para a fila(numeros) ou pilha(operadores)
-
-            System.out.println(pedaço);
-        }
-        return 0;
+    static double resolva(String strExp) throws Exception{
+        Expressao expressao = new Expressao();
+        return expressao.resolver(strExp);
     }
-
-
 }

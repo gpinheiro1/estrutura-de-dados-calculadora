@@ -6,8 +6,10 @@ public class ValidationUtils {
 
         if (expressao == null | expressao == "")
             throw new Exception("Valores inválidos!");
-        return expressao;
 
-        //fazer outras validações como operadores um ao lado do outro, ex: 10+*2 -> expressao invalida
+        if(!expressao.matches("[a-zA-Z]+"))
+            throw new Exception("Letras não são permitidas na expressão");
+
+        return expressao;
     }
 }
