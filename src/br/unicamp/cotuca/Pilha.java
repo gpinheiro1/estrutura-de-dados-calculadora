@@ -38,6 +38,11 @@ public class Pilha<T> {
         return elemento;
     }
 
+    public T exibeTopo() {
+        T elemento = (T) this.pilha[topo];
+        return elemento;
+    }
+
     @Override
     public String toString() {
         return "Pilha {" +

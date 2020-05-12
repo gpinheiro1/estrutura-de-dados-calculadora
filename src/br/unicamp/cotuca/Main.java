@@ -1,8 +1,10 @@
 package br.unicamp.cotuca;
 
+import java.text.Normalizer;
 import java.util.Scanner;
 
 public class Main {
+
 
     public static void main(String[] args) {
 
@@ -13,8 +15,8 @@ public class Main {
             String exp = s.nextLine();
 
             Expressao.resolva(exp);
-
-//            teste métodos pilha
+//
+//            //teste métodos pilha
 //            Pilha teste = new Pilha(3);
 //            teste.empilhar(10);
 //            teste.empilhar(25);
@@ -22,7 +24,7 @@ public class Main {
 //            teste.desempilharEretornar();
 //            System.out.println(teste);
 //
-//            teste métodos fila
+//            //teste métodos fila
 //            Fila fila = new Fila(4);
 //            fila.adicionar(5);
 //            fila.adicionar(5);
@@ -36,7 +38,5 @@ public class Main {
         } catch (Exception e) {
             e.getMessage();
         }
-
-
     }
 }
