@@ -38,6 +38,13 @@ public class Pilha<T> {
         return elemento;
     }
 
+    public void desempilhar() throws Exception {
+        if(estaVazia())
+            throw new Exception("A pilha está vazia, não é possível remover");
+        this.pilha[topo] = null;
+        topo--;
+    }
+
     public T exibeTopo() {
         T elemento = (T) this.pilha[topo];
         return elemento;

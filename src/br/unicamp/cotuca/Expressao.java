@@ -30,10 +30,18 @@ public class Expressao {
                     pilhaDeOperadores.empilhar(pedaço);
                 } else {
                     String topo = pilhaDeOperadores.exibeTopo();
-                    if(Simbolo.alocaOperadores(pedaço, topo.toString()))
-                        filaDeSaida.adicionar(pedaço);
-                    else
-                        pilhaDeOperadores.empilhar(pedaço);
+                    while (Operador.alocar(pedaço, topo)) {
+                        filaDeSaida.adicionar(topo);
+                        pilhaDeOperadores.desempilhar();
+                        topo = pilhaDeOperadores.exibeTopo();
+                    }
+                    pilhaDeOperadores.empilhar(pedaço);
+                }
+            } else if (pedaço.matches("[)]+")) {
+                String elemento = pilhaDeOperadores.desempilharEretornar();
+                while (!elemento.equals("(")) {
+                    filaDeSaida.adicionar(elemento);
+                    elemento = pilhaDeOperadores.desempilharEretornar();
                 }
             }
         }
