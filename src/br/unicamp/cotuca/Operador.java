@@ -77,4 +77,15 @@ public class Operador {
         }
         return true;
     }
+
+    public static double calcular(String operador, double valor1, double valor2) throws Exception {
+        switch (operador) {
+            case "*": return valor1 * valor2;
+            case "/": return valor1 / valor2;
+            case "+": return valor1 + valor2;
+            case "-": return valor1 - valor2;
+            default: throw new Exception("");
+        }
+    }
+
 }
