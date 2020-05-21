@@ -84,6 +84,7 @@ public class Operador {
             case "/": return valor1 / valor2;
             case "+": return valor1 + valor2;
             case "-": return valor1 - valor2;
+            case "^": return Math.pow(valor1, valor2);
             default: throw new Exception("");
         }
     }

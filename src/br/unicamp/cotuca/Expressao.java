@@ -55,38 +55,35 @@ public class Expressao {
             String topo = pilhaDeOperadores.desempilharEretornar();
             filaDeSaida.adicionar(topo);
         }
-          calculadoraDaExpressao();
 
-        return 2.0; //posso retornar o ultimo elemento da fila (em double)
+        return calculadoraDaExpressao();
     }
 
     private double calculadoraDaExpressao() throws Exception {
 
-        String elementoDaFila = filaDeSaida.removerEretornar();
-        while (!elementoDaFila.matches("[\\^\\/*+\\-]")) {
-            if (elementoDaFila.matches("[0-9]+")) {
-                pilhaResultado.empilhar(elementoDaFila);
-                elementoDaFila = filaDeSaida.removerEretornar();
+        while (!filaDeSaida.estaVazia()) {
+            String elementoDaFila = filaDeSaida.removerEretornar();
+            while (!elementoDaFila.matches("[\\^\\/*+\\-]")) {
+                if (elementoDaFila.matches("[0-9]+")) {
+                    pilhaResultado.empilhar(elementoDaFila);
+                    elementoDaFila = filaDeSaida.removerEretornar();
+                }
             }
-        }
-        operador = elementoDaFila;
-        String elemento = pilhaResultado.desempilharEretornar();
-        if (elemento.matches("[0-9]+")) {
+            operador = elementoDaFila;
+            String elemento = pilhaResultado.desempilharEretornar();
             valor2 = Double.parseDouble(elemento);
             elemento = pilhaResultado.desempilharEretornar();
             valor1 = Double.parseDouble(elemento);
+            double resultado = Operador.calcular(operador, valor1, valor2);
+            pilhaResultado.empilhar(String.valueOf(resultado));
         }
-            if(operador.matches("[\\^\\/*+\\-]")) {
-                double resultado = Operador.calcular(operador, valor1, valor2);
-                pilhaResultado.empilhar(String.valueOf(resultado));
-        }
-            //repetir o processo casa ainda haja elementos na fila de saída;
-        return 2.0;
+        if (pilhaResultado.tamanho() > 1)
+            throw new Exception("Expressão inválida");
+        return Double.parseDouble(pilhaResultado.desempilharEretornar());
     }
 
     private String eliminaEspacosEmBranco(String expressao) {
         expressao = expressao.replaceAll("\\s+", "");
-        System.out.println(expressao);
         return expressao;
     }
 
