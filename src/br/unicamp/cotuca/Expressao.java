@@ -1,3 +1,7 @@
+/********************************
+ * NOME: GIOVANA PINHEIRO CUNHA *
+ * RA: 19358                    *
+ ********************************/
 package br.unicamp.cotuca;
 
 import validations.ValidationUtils;
